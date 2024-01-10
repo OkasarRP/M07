@@ -1,5 +1,5 @@
 <?php
-
+    
 
     $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
     $dotenv->safeload();
@@ -11,9 +11,9 @@
     // register all the services
     
 
-    Container::bind('config', require 'config.php');
+    Registry::bind('config', require 'config.php');
     
-    Container::bind('database', new QueryBuilder(
-        Connection::make(Registry::get('config')['db'])
+    Registry::bind('database', new QueryBuilder(
+        Connection::make(Registry::get('config'))
     ));
     
